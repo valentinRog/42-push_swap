@@ -84,7 +84,7 @@ bool	check_arg(int argc, char **argv)
 				return (false);
 		}
 		else
-			if (!ft_str_isdigit(argv[i] + 1))
+			if (!ft_str_isdigit(argv[i]))
 				return (false);
 		if (ft_strlen(argv[i]) > ft_strlen("-2147483648"))
 			return (false);
