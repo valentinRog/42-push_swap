@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrogiste <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/07 12:28:16 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/03/08 08:21:59 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	exec_op(t_ps *ps)
 	char	*op;
 
 	op = get_next_line(0);
-	while (op && *op)
+	while (op)
 	{
 		if (do_op_str(op, ps))
 		{
