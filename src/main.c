@@ -80,7 +80,7 @@ bool	check_arg(int argc, char **argv)
 				return (false);
 		if (*argv[i] == '-')
 		{
-			if (!ft_str_isdigit(argv[i] + 1))
+			if (!*(argv[i] + 1) || !ft_str_isdigit(argv[i] + 1))
 				return (false);
 		}
 		else

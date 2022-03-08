@@ -6,7 +6,7 @@
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/08 08:21:59 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/03/08 13:55:38 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ bool	check_arg(int argc, char **argv)
 				return (false);
 		if (*argv[i] == '-')
 		{
-			if (!ft_str_isdigit(argv[i] + 1))
+			if (!*(argv[i] + 1) || !ft_str_isdigit(argv[i] + 1))
 				return (false);
 		}
 		else
