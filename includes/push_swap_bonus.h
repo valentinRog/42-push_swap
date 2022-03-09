@@ -13,7 +13,6 @@
 #ifndef PUSH_SWAP_BONUS_H
 # define PUSH_SWAP_BONUS_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdbool.h>

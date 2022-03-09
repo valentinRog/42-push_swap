@@ -66,7 +66,7 @@ static void	exec_best_algo(int argc, char **argv)
 	ps_clear(&ps);
 }
 
-static bool	check_arg(int argc, char **argv)
+static bool	check_error(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -78,19 +78,19 @@ static bool	check_arg(int argc, char **argv)
 		j = 0;
 		while (++j < argc)
 			if (!ft_strcmp(argv[i], argv[j]) && i != j)
-				return (false);
+				return (true);
 		atoi_error(argv[i], &error);
 		if (error)
-			return (false);
+			return (true);
 	}
-	return (true);
+	return (false);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc > 1)
 	{
-		if (!check_arg(argc, argv))
+		if (check_error(argc, argv))
 			ft_putstr_fd("Error\n", 2);
 		else
 			exec_best_algo(argc, argv);

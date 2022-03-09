@@ -6,7 +6,7 @@
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/09 19:34:20 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/03/09 22:13:41 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	fill_arg(t_ps *ps, int argc, char **argv)
 	return (0);
 }
 
-static bool	check_arg(int argc, char **argv)
+static bool	check_error(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -53,12 +53,12 @@ static bool	check_arg(int argc, char **argv)
 		j = 0;
 		while (++j < argc)
 			if (!ft_strcmp(argv[i], argv[j]) && i != j)
-				return (false);
+				return (true);
 		atoi_error(argv[i], &error);
 		if (error)
-			return (false);
+			return (true);
 	}
-	return (true);
+	return (false);
 }
 
 static void	exec_op(t_ps *ps)
@@ -88,7 +88,7 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (!check_arg(argc, argv))
+		if (check_error(argc, argv))
 		{
 			ft_putstr_fd("Error\n", 2);
 			return (0);
