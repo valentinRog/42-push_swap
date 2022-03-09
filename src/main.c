@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	init_ps(t_ps *ps, bool prepare, bool print)
+static void	init_ps(t_ps *ps, bool prepare, bool print)
 {
 	ps->a = NULL;
 	ps->b = NULL;
@@ -21,7 +21,7 @@ void	init_ps(t_ps *ps, bool prepare, bool print)
 	ps->print = print;
 }
 
-int	fill_arg(t_ps *ps, int argc, char **argv)
+static int	fill_arg(t_ps *ps, int argc, char **argv)
 {
 	int		i;
 	t_list	*node;
@@ -41,7 +41,7 @@ int	fill_arg(t_ps *ps, int argc, char **argv)
 	return (0);
 }
 
-void	exec_best_algo(int argc, char **argv)
+static void	exec_best_algo(int argc, char **argv)
 {
 	t_ps	ps;
 	int		prepared;
@@ -66,7 +66,7 @@ void	exec_best_algo(int argc, char **argv)
 	ps_clear(&ps);
 }
 
-bool	check_arg(int argc, char **argv)
+static bool	check_arg(int argc, char **argv)
 {
 	int		i;
 	int		j;

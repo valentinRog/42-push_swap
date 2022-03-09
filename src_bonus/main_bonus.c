@@ -6,13 +6,13 @@
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/09 19:32:11 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:34:20 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-void	init_ps(t_ps *ps, bool prepare, bool print)
+static void	init_ps(t_ps *ps, bool prepare, bool print)
 {
 	ps->a = NULL;
 	ps->b = NULL;
@@ -21,7 +21,7 @@ void	init_ps(t_ps *ps, bool prepare, bool print)
 	ps->print = print;
 }
 
-int	fill_arg(t_ps *ps, int argc, char **argv)
+static int	fill_arg(t_ps *ps, int argc, char **argv)
 {
 	int		i;
 	t_list	*node;
@@ -41,7 +41,7 @@ int	fill_arg(t_ps *ps, int argc, char **argv)
 	return (0);
 }
 
-bool	check_arg(int argc, char **argv)
+static bool	check_arg(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -61,7 +61,7 @@ bool	check_arg(int argc, char **argv)
 	return (true);
 }
 
-void	exec_op(t_ps *ps)
+static void	exec_op(t_ps *ps)
 {
 	char	*op;
 
