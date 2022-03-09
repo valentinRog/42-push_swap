@@ -76,9 +76,8 @@ void			ps_clear(t_ps *ps);
 /*utils_bonus*/
 size_t			ft_strlen(const char *str);
 void			ft_putstr_fd(char *s, int fd);
-bool			ft_str_isdigit(char *str);
 int				ft_strcmp(char *s1, char *s2);
-long long int	ft_atol(const char *str);
+int				atoi_error(char *str, bool *error);
 
 /*get_next_line_bonus*/
 char			*get_next_line(int fd);

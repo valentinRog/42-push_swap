@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrogiste <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:34:14 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/07 11:34:17 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/03/09 19:30:46 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,6 @@ void	ft_putstr_fd(char *s, int fd)
 		write(fd, s, ft_strlen(s));
 }
 
-bool	ft_str_isdigit(char *str)
-{
-	if (!str || !*str)
-		return (true);
-	if (*str >= '0' && *str <= '9')
-		return (ft_str_isdigit(str + 1));
-	return (false);
-}
-
 int	ft_strcmp(char *s1, char *s2)
 {
 	int	i;
@@ -44,23 +35,31 @@ int	ft_strcmp(char *s1, char *s2)
 	return (s1[i] - s2[i]);
 }
 
-long long int	ft_atol(const char *str)
+int	atoi_error(char *str, bool *error)
 {
-	unsigned long long int	sum;
+	long long int			sum;
 	int						sign;
+	bool					error_val;
 
 	sum = 0;
 	sign = 1;
-	if (*str == '-')
-	{
-		str++;
-		sign = -1;
-	}
+	error_val = false;
+	if (*str == '+' || *str == '-')
+		if (*(str++) == '-')
+			sign = -1;
+	if (!*str)
+		error_val = true;
 	while (*str >= '0' && *str <= '9')
 	{
 		sum *= 10;
 		sum += *str - '0';
+		if ((sum * sign) > INT_MAX || (sum * sign) < INT_MIN)
+			error_val = true;
 		str++;
 	}
+	if (*str)
+		error_val = true;
+	if (error)
+		*error = error_val;
 	return (sum * sign);
 }

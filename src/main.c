@@ -29,7 +29,7 @@ int	fill_arg(t_ps *ps, int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
-		node = lst_new(ft_atol(argv[i]));
+		node = lst_new(atoi_error(argv[i], NULL));
 		if (!node)
 		{
 			ps_clear(ps);
@@ -68,8 +68,9 @@ void	exec_best_algo(int argc, char **argv)
 
 bool	check_arg(int argc, char **argv)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	bool	error;
 
 	i = 0;
 	while (++i < argc)
@@ -78,17 +79,8 @@ bool	check_arg(int argc, char **argv)
 		while (++j < argc)
 			if (!ft_strcmp(argv[i], argv[j]) && i != j)
 				return (false);
-		if (*argv[i] == '-')
-		{
-			if (!*(argv[i] + 1) || !ft_str_isdigit(argv[i] + 1))
-				return (false);
-		}
-		else
-			if (!ft_str_isdigit(argv[i]))
-				return (false);
-		if (ft_strlen(argv[i]) > ft_strlen("-2147483648"))
-			return (false);
-		if (ft_atol(argv[i]) > INT_MAX || ft_atol(argv[i]) < INT_MIN)
+		atoi_error(argv[i], &error);
+		if (error)
 			return (false);
 	}
 	return (true);
