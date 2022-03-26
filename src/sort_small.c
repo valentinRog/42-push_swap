@@ -12,46 +12,17 @@
 
 #include "push_swap.h"
 
-static bool	is_in_order(t_list *head)
-{
-	t_list	*node;
-	int		prev;
-
-	node = lst_min(head);
-	prev = node->val;
-	node = node->next;
-	if (!node)
-		node = head;
-	while (node != lst_min(head))
-	{
-		if (node->val < prev)
-			return (false);
-		prev = node->val;
-		node = node->next;
-		if (!node)
-			node = head;
-	}
-	return (true);
-}
-
 static void	sort_3(t_ps *ps)
 {
-	if (!is_in_order(ps->a))
+	if (lst_max(ps->a) != lst_last(ps->a))
 	{
-		if (dtt(lst_max(ps->a)) > 0)
-			while (ps->a != lst_max(ps->a))
-				do_op(RA, ps);
-		else
-			while (ps->a != lst_max(ps->a))
-				do_op(RRA, ps);
-		do_op(SA, ps);
-	}
-	if (dtt(lst_min(ps->a)) > 0)
-		while (!is_sorted(ps->a))
+		if (lst_max(ps->a) == ps->a)
 			do_op(RA, ps);
-	else
-		while (!is_sorted(ps->a))
+		else
 			do_op(RRA, ps);
+	}
+	if (!is_sorted(ps->a))
+		do_op(SA, ps);
 }
 
 void	sort_small(t_ps *ps)
