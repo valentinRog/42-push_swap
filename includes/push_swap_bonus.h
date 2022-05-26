@@ -18,7 +18,7 @@
 # include <stdbool.h>
 # include <limits.h>
 
-enum
+enum e_op
 {
 	SA,
 	SB,
@@ -49,36 +49,36 @@ typedef struct s_ps
 	bool	prepare;
 }	t_ps;
 
-/*lst_bonus*/
+/*lst*/
 t_list			*lst_new(int val);
 int				lst_size(t_list *lst);
 t_list			*lst_last(t_list *lst);
 void			lst_add_front(t_list **alst, t_list *new_node);
 void			lst_add_back(t_list **alst, t_list *new_node);
 
-/*op_bonus*/
+/*op*/
 void			swap(t_list **head);
 void			rotate(t_list **head);
 void			reverse_rotate(t_list **head);
 void			push(t_list **a_src, t_list **dst);
 
-/*do_op_bonus*/
+/*do_op*/
 int				do_op_str(char *str, t_ps *ps);
-void			do_op(int op, t_ps *ps);
+void			do_op(enum e_op op, t_ps *ps);
 
-/*sort_bonus*/
+/*sort*/
 bool			is_sorted(t_list *head);
 
-/*clear_bonus*/
+/*clear*/
 void			ps_clear(t_ps *ps);
 
-/*utils_bonus*/
+/*utils*/
 size_t			str_len(const char *str);
 void			put_str_fd(char *s, int fd);
 int				str_cmp(char *s1, char *s2);
 int				atoi_error(char *str, bool *error);
 
-/*get_next_line_bonus*/
+/*get_next_line*/
 char			*get_next_line(int fd);
 
 #endif

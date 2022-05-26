@@ -41,7 +41,7 @@ int	do_op_str(char *op, t_ps *ps)
 	return (0);
 }
 
-void	do_op(int op, t_ps *ps)
+void	do_op(enum e_op op, t_ps *ps)
 {
 	ps->ops++;
 	if (op == SA || op == SS)
