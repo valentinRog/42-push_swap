@@ -1,28 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/08 08:23:05 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/08 08:23:15 by vrogiste         ###   ########.fr       */
+/*   Created: 2022/04/09 12:10:38 by vrogiste          #+#    #+#             */
+/*   Updated: 2022/05/26 11:14:53 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_BONUS_H
-# define GET_NEXT_LINE_BONUS_H
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-# include <unistd.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 64
+# endif
+
 # include <stdlib.h>
+# include <unistd.h>
+# include <stdbool.h>
+# include <stdint.h>
 
-typedef struct s_list
-{
-	char			c;
-	struct s_list	*prev;
-	struct s_list	*next;
-}	t_list;
+/*get_next_line_utils*/
+int64_t	min(int64_t a, int64_t b);
+void	*ft_memchr(const void *s, int c, size_t n);
+void	str_n_cpy(char *dst, char *src, size_t len);
+char	*str_n_dup(char *src, size_t n);
 
+/*get_next_line*/
 char	*get_next_line(int fd);
 
 #endif

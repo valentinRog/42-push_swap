@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main_bonus.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/05/26 09:34:29 by vrogiste         ###   ########.fr       */
+/*   Created: 2022/05/26 11:26:08 by vrogiste          #+#    #+#             */
+/*   Updated: 2022/05/26 11:27:07 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
+#include "get_next_line.h"
 
 static void	init_ps(t_ps *ps, bool prepare, bool print)
 {
@@ -65,14 +66,14 @@ static void	exec_op(t_ps *ps)
 {
 	char	*op;
 
-	op = get_next_line(0);
+	op = get_next_line(STDIN_FILENO);
 	while (op)
 	{
 		if (do_op_str(op, ps))
 		{
 			free(op);
 			ps_clear(ps);
-			put_str_fd("Error\n", 2);
+			put_str_fd("Error\n", STDERR_FILENO);
 			exit(EXIT_SUCCESS);
 		}
 		free(op);
@@ -90,16 +91,16 @@ int	main(int argc, char **argv)
 	{
 		if (check_error(argc, argv))
 		{
-			put_str_fd("Error\n", 2);
+			put_str_fd("Error\n", STDERR_FILENO);
 			return (0);
 		}
 		init_ps(&ps, false, false);
 		fill_arg(&ps, argc, argv);
 		exec_op(&ps);
 		if (is_sorted(ps.a) && !ps.b)
-			put_str_fd("OK\n", 1);
+			put_str_fd("OK\n", STDOUT_FILENO);
 		else
-			put_str_fd("K0\n", 1);
+			put_str_fd("K0\n", STDOUT_FILENO);
 		ps_clear(&ps);
 	}
 	return (0);

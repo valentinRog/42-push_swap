@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort_bonus.c                                       :+:      :+:    :+:   */
+/*   clear.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrogiste <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/07 11:34:04 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/07 11:34:05 by vrogiste         ###   ########.fr       */
+/*   Created: 2022/05/26 11:24:49 by vrogiste          #+#    #+#             */
+/*   Updated: 2022/05/26 11:24:49 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap_bonus.h"
 
-bool	is_sorted(t_list *head)
+void	lst_clear(t_list **lst)
 {
-	if (!head)
-		return (true);
-	if (head->prev)
-		if (!(head->val > head->prev->val))
-			return (false);
-	return (is_sorted(head->next));
+	t_list	*swap;
+
+	while (lst && *lst)
+	{
+		swap = (*lst)->next;
+		free(*lst);
+		*lst = swap;
+	}
+}
+
+void	ps_clear(t_ps *ps)
+{
+	lst_clear(&ps->a);
+	lst_clear(&ps->b);
 }

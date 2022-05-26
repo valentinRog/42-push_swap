@@ -34,7 +34,7 @@ static int	init_ps(t_ps *ps, int argc, char **argv)
 	return (0);
 }
 
-static bool	check_error(int argc, char **argv)
+static bool	check_args(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -60,8 +60,8 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 	{
-		if (check_error(argc, argv))
-			put_str_fd("Error\n", 2);
+		if (check_args(argc, argv))
+			put_str_fd("Error\n", STDERR_FILENO);
 		else
 		{
 			init_ps(&ps, argc, argv);

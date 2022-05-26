@@ -15,27 +15,27 @@
 void	print_op(enum e_op op)
 {
 	if (op == SA)
-		put_str_fd("sa\n", 1);
+		put_str_fd("sa\n", STDOUT_FILENO);
 	else if (op == SB)
-		put_str_fd("sb\n", 1);
+		put_str_fd("sb\n", STDOUT_FILENO);
 	else if (op == SS)
-		put_str_fd("ss\n", 1);
+		put_str_fd("ss\n", STDOUT_FILENO);
 	else if (op == PA)
-		put_str_fd("pa\n", 1);
+		put_str_fd("pa\n", STDOUT_FILENO);
 	else if (op == PB)
-		put_str_fd("pb\n", 1);
+		put_str_fd("pb\n", STDOUT_FILENO);
 	else if (op == RA)
-		put_str_fd("ra\n", 1);
+		put_str_fd("ra\n", STDOUT_FILENO);
 	else if (op == RB)
-		put_str_fd("rb\n", 1);
+		put_str_fd("rb\n", STDOUT_FILENO);
 	else if (op == RR)
-		put_str_fd("rr\n", 1);
+		put_str_fd("rr\n", STDOUT_FILENO);
 	else if (op == RRA)
-		put_str_fd("rra\n", 1);
+		put_str_fd("rra\n", STDOUT_FILENO);
 	else if (op == RRB)
-		put_str_fd("rrb\n", 1);
+		put_str_fd("rrb\n", STDOUT_FILENO);
 	else if (op == RRR)
-		put_str_fd("rrr\n", 1);
+		put_str_fd("rrr\n", STDOUT_FILENO);
 }
 
 void	do_op(enum e_op op, t_ps *ps)
