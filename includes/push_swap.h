@@ -44,9 +44,6 @@ typedef struct s_ps
 {
 	t_list	*a;
 	t_list	*b;
-	size_t	ops;
-	bool	print;
-	bool	prepare;
 }	t_ps;
 
 /*lst*/
@@ -81,8 +78,8 @@ int				abs_max(int a, int b);
 t_list			*lst_min(t_list *head);
 t_list			*lst_max(t_list *head);
 
-/*prepare*/
-void			prepare(t_ps *ps);
+/*chunks*/
+void			push_chunks(t_ps *ps);
 
 /*sort_small*/
 void			sort_small(t_ps *ps);

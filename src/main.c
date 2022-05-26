@@ -12,13 +12,10 @@
 
 #include "push_swap.h"
 
-static void	init_ps(t_ps *ps, bool prepare, bool print)
+static void	init_ps(t_ps *ps)
 {
 	ps->a = NULL;
 	ps->b = NULL;
-	ps->ops = 0;
-	ps->prepare = prepare;
-	ps->print = print;
 }
 
 static int	fill_arg(t_ps *ps, int argc, char **argv)
@@ -39,31 +36,6 @@ static int	fill_arg(t_ps *ps, int argc, char **argv)
 		i++;
 	}
 	return (0);
-}
-
-static void	exec_best_algo(int argc, char **argv)
-{
-	t_ps	ps;
-	int		prepared;
-	int		not_prepared;
-
-	init_ps(&ps, false, false);
-	fill_arg(&ps, argc, argv);
-	sort(&ps);
-	ps_clear(&ps);
-	not_prepared = ps.ops;
-	init_ps(&ps, true, false);
-	fill_arg(&ps, argc, argv);
-	sort(&ps);
-	ps_clear(&ps);
-	prepared = ps.ops;
-	if (prepared < not_prepared)
-		init_ps(&ps, true, true);
-	else
-		init_ps(&ps, false, true);
-	fill_arg(&ps, argc, argv);
-	sort(&ps);
-	ps_clear(&ps);
 }
 
 static bool	check_error(int argc, char **argv)
@@ -88,12 +60,18 @@ static bool	check_error(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
+	t_ps ps;
+
 	if (argc > 1)
 	{
 		if (check_error(argc, argv))
 			put_str_fd("Error\n", 2);
 		else
-			exec_best_algo(argc, argv);
+		{
+			init_ps(&ps);
+			fill_arg(&ps, argc, argv);
+			sort(&ps);
+		}
 	}
 	return (0);
 }

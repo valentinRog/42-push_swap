@@ -75,8 +75,8 @@ void	sort(t_ps *ps)
 		return ;
 	if (lst_size(ps->a) <= 5)
 		return (sort_small(ps));
-	while (lst_size(ps->a) > 2)
-		do_op(PB, ps);
+	push_chunks(ps);
+	do_op(PA, ps);
 	while (ps->b)
 	{
 		align(find_min_cost(ps), ps);

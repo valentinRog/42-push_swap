@@ -40,7 +40,6 @@ void	print_op(enum e_op op)
 
 void	do_op(enum e_op op, t_ps *ps)
 {
-	ps->ops++;
 	if (op == SA || op == SS)
 		swap(&ps->a);
 	if (op == SB || op == SS)
@@ -57,6 +56,5 @@ void	do_op(enum e_op op, t_ps *ps)
 		reverse_rotate(&ps->a);
 	if (op == RRB || op == RRR)
 		reverse_rotate(&ps->b);
-	if (ps->print)
-		print_op(op);
+	print_op(op);
 }
