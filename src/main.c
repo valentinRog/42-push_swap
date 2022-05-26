@@ -12,17 +12,13 @@
 
 #include "push_swap.h"
 
-static void	init_ps(t_ps *ps)
-{
-	ps->a = NULL;
-	ps->b = NULL;
-}
-
-static int	fill_arg(t_ps *ps, int argc, char **argv)
+static int	init_ps(t_ps *ps, int argc, char **argv)
 {
 	int		i;
 	t_list	*node;
 
+	ps->a = NULL;
+	ps->b = NULL;
 	i = 1;
 	while (i < argc)
 	{
@@ -68,8 +64,7 @@ int	main(int argc, char **argv)
 			put_str_fd("Error\n", 2);
 		else
 		{
-			init_ps(&ps);
-			fill_arg(&ps, argc, argv);
+			init_ps(&ps, argc, argv);
 			sort(&ps);
 		}
 	}

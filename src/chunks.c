@@ -25,7 +25,7 @@ void	push_chunks(t_ps *ps)
 {
 	int		chunk_size;
 
-	chunk_size = lst_size(ps->a) / 5 + !lst_size(ps->a) / 5;
+	chunk_size = lst_size(ps->a) / 5 + !(lst_size(ps->a) / 5);
 	while (ps->a)
 	{
 		if (n_higher_val(ps->a, ps->a->val) < chunk_size)
