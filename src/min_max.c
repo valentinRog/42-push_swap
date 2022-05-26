@@ -21,52 +21,48 @@ int	ft_abs(int n)
 
 int	abs_min(int a, int b)
 {
-	if (ft_abs(a) <= ft_abs(b))
-		return (a);
-	return (b);
+	return ((ft_abs(a) <= ft_abs(b)) * a + (ft_abs(b) < ft_abs(a)) * b);
 }
 
 int	abs_max(int a, int b)
 {
-	if (ft_abs(a) >= ft_abs(b))
-		return (a);
-	return (b);
+	return ((ft_abs(a) >= ft_abs(b)) * a + (ft_abs(b) > ft_abs(a)) * b);
 }
 
-t_list	*lst_min(t_list *head)
+t_list	*lst_min(t_list *lst)
 {
 	int		n;
-	t_list	*node;
+	t_list	*node_min;
 
-	n = head->val;
-	node = head;
-	while (head)
+	n = lst->val;
+	node_min = lst;
+	while (lst)
 	{
-		if (head->val < n)
+		if (lst->val < n)
 		{
-			n = head->val;
-			node = head;
+			n = lst->val;
+			node_min = lst;
 		}
-		head = head->next;
+		lst = lst->next;
 	}
-	return (node);
+	return (node_min);
 }
 
-t_list	*lst_max(t_list *head)
+t_list	*lst_max(t_list *lst)
 {
 	int		n;
-	t_list	*node;
+	t_list	*node_max;
 
-	n = head->val;
-	node = head;
-	while (head)
+	n = lst->val;
+	node_max = lst;
+	while (lst)
 	{
-		if (head->val > n)
+		if (lst->val > n)
 		{
-			n = head->val;
-			node = head;
+			n = lst->val;
+			node_max = lst;
 		}
-		head = head->next;
+		lst = lst->next;
 	}
-	return (node);
+	return (node_max);
 }
