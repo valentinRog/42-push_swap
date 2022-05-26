@@ -12,33 +12,33 @@
 
 #include "push_swap.h"
 
-void	print_op(int op)
+void	print_op(enum e_op op)
 {
 	if (op == SA)
-		ft_putstr_fd("sa\n", 1);
+		put_str_fd("sa\n", 1);
 	else if (op == SB)
-		ft_putstr_fd("sb\n", 1);
+		put_str_fd("sb\n", 1);
 	else if (op == SS)
-		ft_putstr_fd("ss\n", 1);
+		put_str_fd("ss\n", 1);
 	else if (op == PA)
-		ft_putstr_fd("pa\n", 1);
+		put_str_fd("pa\n", 1);
 	else if (op == PB)
-		ft_putstr_fd("pb\n", 1);
+		put_str_fd("pb\n", 1);
 	else if (op == RA)
-		ft_putstr_fd("ra\n", 1);
+		put_str_fd("ra\n", 1);
 	else if (op == RB)
-		ft_putstr_fd("rb\n", 1);
+		put_str_fd("rb\n", 1);
 	else if (op == RR)
-		ft_putstr_fd("rr\n", 1);
+		put_str_fd("rr\n", 1);
 	else if (op == RRA)
-		ft_putstr_fd("rra\n", 1);
+		put_str_fd("rra\n", 1);
 	else if (op == RRB)
-		ft_putstr_fd("rrb\n", 1);
+		put_str_fd("rrb\n", 1);
 	else if (op == RRR)
-		ft_putstr_fd("rrr\n", 1);
+		put_str_fd("rrr\n", 1);
 }
 
-void	do_op(int op, t_ps *ps)
+void	do_op(enum e_op op, t_ps *ps)
 {
 	ps->ops++;
 	if (op == SA || op == SS)

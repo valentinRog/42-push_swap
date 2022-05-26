@@ -12,51 +12,51 @@
 
 #include "push_swap.h"
 
-t_list	*homologue(t_list *node_a, t_list *b)
+t_list	*homologue(t_list *node_b, t_list *a)
 {
-	t_list	*node_b;
+	t_list	*node_a;
 
-	node_b = b;
-	if (node_a->val > lst_max(b)->val)
-		return (lst_max(b));
-	if (node_a->val < lst_min(b)->val)
-		return (lst_max(b));
-	if (node_a->val < lst_last(b)->val && node_a->val > node_b->val)
-		return (node_b);
-	node_b = node_b->next;
-	while (node_b->next)
+	node_a = a;
+	if (node_b->val < lst_min(a)->val)
+		return (lst_min(a));
+	if (node_b->val > lst_max(a)->val)
+		return (lst_min(a));
+	if (node_b->val > lst_last(a)->val && node_b->val < node_a->val)
+		return (node_a);
+	node_a = node_a->next;
+	while (node_a->next)
 	{
-		if (node_a->val > node_b->val && node_a->val < node_b->prev->val)
-			return (node_b);
-		node_b = node_b->next;
+		if (node_b->val < node_a->val && node_b->val > node_a->prev->val)
+			return (node_a);
+		node_a = node_a->next;
 	}
-	return (node_b);
+	return (node_a);
 }
 
-static void	align(t_list *node_a, t_ps *ps)
+static void	align(t_list *node_b, t_ps *ps)
 {
-	if (dtt(node_a) > 0 && dtt(homologue(node_a, ps->b)) > 0)
+	if (dtt(node_b) > 0 && dtt(homologue(node_b, ps->a)) > 0)
 	{
-		while (ps->a != node_a && ps->b != homologue(node_a, ps->b))
+		while (ps->b != node_b && ps->a != homologue(node_b, ps->a))
 			do_op(RR, ps);
 	}
-	else if (dtt(node_a) < 0 && dtt(homologue(node_a, ps->b)) < 0)
+	else if (dtt(node_b) < 0 && dtt(homologue(node_b, ps->a)) < 0)
 	{
-		while (ps->a != node_a && ps->b != homologue(node_a, ps->b))
+		while (ps->b != node_b && ps->a != homologue(node_b, ps->a))
 			do_op(RRR, ps);
 	}
-	if (dtt(node_a) > 0)
-		while (ps->a != node_a)
-			do_op(RA, ps);
-	else
-		while (ps->a != node_a)
-			do_op(RRA, ps);
-	if (dtt(homologue(node_a, ps->b)) > 0)
-		while (ps->b != homologue(node_a, ps->b))
+	if (dtt(node_b) > 0)
+		while (ps->b != node_b)
 			do_op(RB, ps);
 	else
-		while (ps->b != homologue(node_a, ps->b))
+		while (ps->b != node_b)
 			do_op(RRB, ps);
+	if (dtt(homologue(node_b, ps->a)) > 0)
+		while (ps->a != homologue(node_b, ps->a))
+			do_op(RA, ps);
+	else
+		while (ps->a != homologue(node_b, ps->a))
+			do_op(RRA, ps);
 }
 
 bool	is_sorted(t_list *head)
@@ -75,21 +75,17 @@ void	sort(t_ps *ps)
 		return ;
 	if (lst_size(ps->a) <= 5)
 		return (sort_small(ps));
-	if (ps->prepare)
-		prepare(ps);
-	while (lst_size(ps->b) < 2)
+	while (lst_size(ps->a) > 2)
 		do_op(PB, ps);
-	while (ps->a)
+	while (ps->b)
 	{
 		align(find_min_cost(ps), ps);
-		do_op(PB, ps);
-	}
-	if (dtt(lst_max(ps->b)) > 0)
-		while (ps->b != lst_max(ps->b))
-			do_op(RB, ps);
-	else
-		while (ps->b != lst_max(ps->b))
-			do_op(RRB, ps);
-	while (ps->b)
 		do_op(PA, ps);
+	}
+	if (dtt(lst_min(ps->a)) > 0)
+		while (ps->a != lst_min(ps->a))
+			do_op(RA, ps);
+	else
+		while (ps->a != lst_min(ps->a))
+			do_op(RRA, ps);
 }

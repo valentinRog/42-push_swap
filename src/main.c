@@ -77,7 +77,7 @@ static bool	check_error(int argc, char **argv)
 	{
 		j = 0;
 		while (++j < argc)
-			if (!ft_strcmp(argv[i], argv[j]) && i != j)
+			if (!str_cmp(argv[i], argv[j]) && i != j)
 				return (true);
 		atoi_error(argv[i], &error);
 		if (error)
@@ -91,7 +91,7 @@ int	main(int argc, char **argv)
 	if (argc > 1)
 	{
 		if (check_error(argc, argv))
-			ft_putstr_fd("Error\n", 2);
+			put_str_fd("Error\n", 2);
 		else
 			exec_best_algo(argc, argv);
 	}

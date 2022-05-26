@@ -73,9 +73,9 @@ bool			is_sorted(t_list *head);
 void			ps_clear(t_ps *ps);
 
 /*utils_bonus*/
-size_t			ft_strlen(const char *str);
-void			ft_putstr_fd(char *s, int fd);
-int				ft_strcmp(char *s1, char *s2);
+size_t			str_len(const char *str);
+void			put_str_fd(char *s, int fd);
+int				str_cmp(char *s1, char *s2);
 int				atoi_error(char *str, bool *error);
 
 /*get_next_line_bonus*/

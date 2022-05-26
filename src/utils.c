@@ -6,26 +6,26 @@
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:34:29 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/09 19:51:16 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/05/26 09:34:29 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+size_t	str_len(const char *str)
 {
 	if (str && *str)
-		return (1 + ft_strlen(str + 1));
+		return (1 + str_len(str + 1));
 	return (0);
 }
 
-void	ft_putstr_fd(char *s, int fd)
+void	put_str_fd(char *s, int fd)
 {
 	if (s)
-		write(fd, s, ft_strlen(s));
+		write(fd, s, str_len(s));
 }
 
-int	ft_strcmp(char *s1, char *s2)
+int	str_cmp(char *s1, char *s2)
 {
 	int	i;
 

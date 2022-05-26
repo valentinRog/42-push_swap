@@ -6,7 +6,7 @@
 /*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:32:18 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/03/09 22:13:41 by vrogiste         ###   ########.fr       */
+/*   Updated: 2022/05/26 09:34:29 by vrogiste         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static bool	check_error(int argc, char **argv)
 	{
 		j = 0;
 		while (++j < argc)
-			if (!ft_strcmp(argv[i], argv[j]) && i != j)
+			if (!str_cmp(argv[i], argv[j]) && i != j)
 				return (true);
 		atoi_error(argv[i], &error);
 		if (error)
@@ -72,7 +72,7 @@ static void	exec_op(t_ps *ps)
 		{
 			free(op);
 			ps_clear(ps);
-			ft_putstr_fd("Error\n", 2);
+			put_str_fd("Error\n", 2);
 			exit(EXIT_SUCCESS);
 		}
 		free(op);
@@ -90,16 +90,16 @@ int	main(int argc, char **argv)
 	{
 		if (check_error(argc, argv))
 		{
-			ft_putstr_fd("Error\n", 2);
+			put_str_fd("Error\n", 2);
 			return (0);
 		}
 		init_ps(&ps, false, false);
 		fill_arg(&ps, argc, argv);
 		exec_op(&ps);
 		if (is_sorted(ps.a) && !ps.b)
-			ft_putstr_fd("OK\n", 1);
+			put_str_fd("OK\n", 1);
 		else
-			ft_putstr_fd("K0\n", 1);
+			put_str_fd("K0\n", 1);
 		ps_clear(&ps);
 	}
 	return (0);

@@ -14,27 +14,27 @@
 
 int	do_op_str(char *op, t_ps *ps)
 {
-	if (!ft_strcmp(op, "sa\n"))
+	if (!str_cmp(op, "sa\n"))
 		do_op(SA, ps);
-	else if (!ft_strcmp(op, "sb\n"))
+	else if (!str_cmp(op, "sb\n"))
 		do_op(SB, ps);
-	else if (!ft_strcmp(op, "ss\n"))
+	else if (!str_cmp(op, "ss\n"))
 		do_op(SS, ps);
-	else if (!ft_strcmp(op, "pa\n"))
+	else if (!str_cmp(op, "pa\n"))
 		do_op(PA, ps);
-	else if (!ft_strcmp(op, "pb\n"))
+	else if (!str_cmp(op, "pb\n"))
 		do_op(PB, ps);
-	else if (!ft_strcmp(op, "ra\n"))
+	else if (!str_cmp(op, "ra\n"))
 		do_op(RA, ps);
-	else if (!ft_strcmp(op, "rb\n"))
+	else if (!str_cmp(op, "rb\n"))
 		do_op(RB, ps);
-	else if (!ft_strcmp(op, "rr\n"))
+	else if (!str_cmp(op, "rr\n"))
 		do_op(RR, ps);
-	else if (!ft_strcmp(op, "rra\n"))
+	else if (!str_cmp(op, "rra\n"))
 		do_op(RRA, ps);
-	else if (!ft_strcmp(op, "rrb\n"))
+	else if (!str_cmp(op, "rrb\n"))
 		do_op(RRB, ps);
-	else if (!ft_strcmp(op, "rrr\n"))
+	else if (!str_cmp(op, "rrr\n"))
 		do_op(RRR, ps);
 	else
 		return (-1);
