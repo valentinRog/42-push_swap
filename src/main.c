@@ -60,7 +60,7 @@ static bool	check_error(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	t_ps ps;
+	t_ps	ps;
 
 	if (argc > 1)
 	{

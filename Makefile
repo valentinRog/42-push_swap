@@ -35,3 +35,9 @@ fclean: clean
 	$(RM) $(NAME) $(NAMEB)
 
 re: fclean all
+
+100: $(NAME)
+	@./$(NAME) `ruby -e "puts (-50..50).to_a.shuffle.join(' ')"`
+
+500: $(NAME)
+	@./$(NAME) `ruby -e "puts (-250..250).to_a.shuffle.join(' ')"`
