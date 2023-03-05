@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vrogiste <vrogiste@student.s19.be>         +#+  +:+       +#+        */
+/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 11:34:29 by vrogiste          #+#    #+#             */
-/*   Updated: 2022/05/26 09:34:29 by vrogiste         ###   ########.fr       */
+/*   Updated: 2023/03/05 20:07:11 by root             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	str_len(const char *str)
 	return (0);
 }
 
-void	put_str_fd(char *s, int fd)
+void	put_str_fd(const char *s, int fd)
 {
 	if (s)
 		write(fd, s, str_len(s));

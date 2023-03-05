@@ -14,28 +14,22 @@
 
 void	print_op(enum e_op op)
 {
-	if (op == SA)
-		put_str_fd("sa\n", STDOUT_FILENO);
-	else if (op == SB)
-		put_str_fd("sb\n", STDOUT_FILENO);
-	else if (op == SS)
-		put_str_fd("ss\n", STDOUT_FILENO);
-	else if (op == PA)
-		put_str_fd("pa\n", STDOUT_FILENO);
-	else if (op == PB)
-		put_str_fd("pb\n", STDOUT_FILENO);
-	else if (op == RA)
-		put_str_fd("ra\n", STDOUT_FILENO);
-	else if (op == RB)
-		put_str_fd("rb\n", STDOUT_FILENO);
-	else if (op == RR)
-		put_str_fd("rr\n", STDOUT_FILENO);
-	else if (op == RRA)
-		put_str_fd("rra\n", STDOUT_FILENO);
-	else if (op == RRB)
-		put_str_fd("rrb\n", STDOUT_FILENO);
-	else if (op == RRR)
-		put_str_fd("rrr\n", STDOUT_FILENO);
+	static const char	*op_str[N_OP] = {
+		"sa",
+		"sb",
+		"ss",
+		"pa",
+		"pb",
+		"ra",
+		"rb",
+		"rr",
+		"rra",
+		"rrb",
+		"rrr"
+	};
+
+	put_str_fd(op_str[op], STDOUT_FILENO);
+	put_str_fd("\n", STDOUT_FILENO);
 }
 
 void	do_op(enum e_op op, t_ps *ps)

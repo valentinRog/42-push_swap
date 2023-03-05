@@ -12,55 +12,84 @@
 
 #include "push_swap.h"
 
-void	swap(t_list **head)
+void	swap(t_list *lst)
 {
-	t_list	*new_head;
+	t_node	*first;
+	t_node	*second;
+	t_node	*third;
 
-	if (head && lst_size(*head) > 1)
-	{
-		new_head = (*head)->next;
-		(*head)->next = new_head->next;
-		if (new_head->next)
-			new_head->next->prev = (*head);
-		lst_add_front(head, new_head);
-	}
+	if (!lst || !lst->head || lst->head == lst->tail)
+		return ;
+	first = lst->head;
+	second = first->next;
+	if (!second)
+		return ;
+	third = second->next;
+	if (third)
+		third->prev = first;
+	second->next = first;
+	first->prev = second;
+	first->next = third;
+	if (!third)
+		lst->tail = first;
+	else
+		third->prev = first;
+	lst->head = second;
 }
 
-void	rotate(t_list **head)
+void	rotate(t_list *lst)
 {
-	t_list	*new_head;
+	t_node	*first;
+	t_node	*second;
+	t_node	*last;
 
-	if (head && lst_size(*head) > 1)
-	{
-		new_head = (*head)->next;
-		new_head->prev = NULL;
-		lst_add_back(head, *head);
-		*head = new_head;
-	}
+	if (!lst || !lst->head || lst->head == lst->tail)
+		return ;
+	first = lst->head;
+	second = first->next;
+	last = lst->tail;
+	second->prev = NULL;
+	last->next = first;
+	first->prev = last;
+	lst->head = second;
+	lst->tail = first;
+	first->next = NULL;
 }
 
-void	reverse_rotate(t_list **head)
+void	reverse_rotate(t_list *lst)
 {
-	t_list	*new_last;
+	t_node	*first;
+	t_node	*last;
+	t_node	*second_last;
 
-	if (head && lst_size(*head) > 1)
-	{
-		new_last = lst_last(*head)->prev;
-		lst_add_front(head, lst_last(*head));
-		new_last->next = NULL;
-	}
+	if (!lst || !lst->head || lst->head == lst->tail)
+		return ;
+	first = lst->head;
+	last = lst->tail;
+	second_last = last->prev;
+	second_last->next = NULL;
+	last->prev = NULL;
+	first->prev = last;
+	last->next = first;
+	lst->head = last;
+	lst->tail = second_last;
 }
 
-void	push(t_list **a_src, t_list **dst)
+void	push(t_list *src, t_list *dst)
 {
-	t_list	*new_head;
+	t_node	*node;
 
-	if (a_src && *a_src && dst)
-	{
-		new_head = (*a_src)->next;
-		if (new_head)
-			new_head->prev = NULL;
-		lst_add_front(dst, *a_src);
-		*a_src = new_head;
-	}
+	if (!src || !dst || !src->head)
+		return ;
+	node = src->head;
+	src->head = node->next;
+	if (!src->head)
+		src->tail = NULL;
+	node->next = dst->head;
+	node->prev = NULL;
+	if (dst->head)
+		dst->head->prev = node;
+	dst->head = node;
+	if (!dst->tail)
+		dst->tail = node;
 }

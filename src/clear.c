@@ -12,9 +12,9 @@
 
 #include "push_swap.h"
 
-void	lst_clear(t_list **lst)
+void	lst_clear(t_node **lst)
 {
-	t_list	*swap;
+	t_node	*swap;
 
 	while (lst && *lst)
 	{
@@ -26,6 +26,6 @@ void	lst_clear(t_list **lst)
 
 void	ps_clear(t_ps *ps)
 {
-	lst_clear(&ps->a);
-	lst_clear(&ps->b);
+	lst_clear(&ps->a.head);
+	lst_clear(&ps->b.head);
 }

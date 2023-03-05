@@ -14,9 +14,7 @@
 
 int	ft_abs(int n)
 {
-	if (n < 0)
-		return (-n);
-	return (n);
+	return ((n < 0) * (-n) + (n >= 0) * n);
 }
 
 int	abs_min(int a, int b)
@@ -29,10 +27,10 @@ int	abs_max(int a, int b)
 	return ((ft_abs(a) >= ft_abs(b)) * a + (ft_abs(b) > ft_abs(a)) * b);
 }
 
-t_list	*lst_min(t_list *lst)
+t_node	*lst_min(t_node *lst)
 {
 	int		n;
-	t_list	*node_min;
+	t_node	*node_min;
 
 	n = lst->val;
 	node_min = lst;
@@ -48,10 +46,10 @@ t_list	*lst_min(t_list *lst)
 	return (node_min);
 }
 
-t_list	*lst_max(t_list *lst)
+t_node	*lst_max(t_node *lst)
 {
 	int		n;
-	t_list	*node_max;
+	t_node	*node_max;
 
 	n = lst->val;
 	node_max = lst;

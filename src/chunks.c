@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-static int	n_higher_val(t_list *lst, int val)
+static int	n_higher_val(t_node *lst, int val)
 {
 	if (!lst)
 		return (0);
@@ -25,10 +25,10 @@ void	push_chunks(t_ps *ps)
 {
 	int		chunk_size;
 
-	chunk_size = lst_size(ps->a) / 5 + !(lst_size(ps->a) / 5);
-	while (ps->a)
+	chunk_size = lst_size(ps->a.head) / 5 + !(lst_size(ps->a.head) / 5);
+	while (ps->a.head)
 	{
-		if (n_higher_val(ps->a, ps->a->val) < chunk_size)
+		if (n_higher_val(ps->a.head, ps->a.head->val) < chunk_size)
 			do_op(PB, ps);
 		else
 			do_op(RA, ps);

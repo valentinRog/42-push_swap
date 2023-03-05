@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-int	dtt(t_list *node)
+int	dtt(t_node *node)
 {
 	int		dp;
 	int		dn;
-	t_list	*temp;
+	t_node	*temp;
 
 	dp = 0;
 	dn = 0;
@@ -35,7 +35,7 @@ int	dtt(t_list *node)
 	return (abs_min(dp, dn));
 }
 
-static int	cost(t_list *node_b, t_ps *ps)
+static int	cost(t_node *node_b, t_ps *ps)
 {
 	int	c1;
 	int	c2;
@@ -49,13 +49,13 @@ static int	cost(t_list *node_b, t_ps *ps)
 	return (ft_abs(c1) + ft_abs(c2));
 }
 
-t_list	*find_min_cost(t_ps *ps)
+t_node	*find_min_cost(t_ps *ps)
 {
-	t_list	*node_b;
-	t_list	*min_cost_node;
+	t_node	*node_b;
+	t_node	*min_cost_node;
 
-	node_b = ps->b;
-	min_cost_node = ps->b;
+	node_b = ps->b.head;
+	min_cost_node = ps->b.head;
 	while (node_b)
 	{
 		if (cost(node_b, ps) < cost(min_cost_node, ps))

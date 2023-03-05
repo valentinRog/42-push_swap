@@ -12,11 +12,11 @@
 
 #include "push_swap.h"
 
-t_list	*lst_new(int val)
+t_node	*lst_new(int val)
 {
-	t_list	*node;
+	t_node	*node;
 
-	node = malloc(sizeof(t_list));
+	node = malloc(sizeof(t_node));
 	if (!node)
 		return (NULL);
 	node->val = val;
@@ -25,49 +25,50 @@ t_list	*lst_new(int val)
 	return (node);
 }
 
-t_list	*lst_last(t_list *lst)
+t_node	*lst_last(t_node *lst)
 {
 	if (lst && lst->next)
 		return (lst_last(lst->next));
 	return (lst);
 }
 
-int	lst_size(t_list *lst)
+int	lst_size(t_node *lst)
 {
 	if (lst)
 		return (1 + lst_size(lst->next));
 	return (0);
 }
 
-void	lst_add_front(t_list **alst, t_list *new_node)
+void	lst_add_front(t_list *lst, t_node *new_node)
 {
-	if (alst && new_node)
+	if (!lst || !new_node)
+		return ;
+	if (!lst->head)
 	{
-		new_node->next = *alst;
-		new_node->prev = NULL;
-		if (*alst)
-			(*alst)->prev = new_node;
-		*alst = new_node;
+		lst->head = new_node;
+		lst->tail = new_node;
+	}
+	else
+	{
+		new_node->next = lst->head;
+		lst->head->prev = new_node;
+		lst->head = new_node;
 	}
 }
 
-void	lst_add_back(t_list **alst, t_list *new_node)
+void	lst_add_back(t_list *lst, t_node *new_node)
 {
-	t_list	*last;
-
-	if (alst && new_node)
+	if (!lst || !new_node)
+		return ;
+	if (!lst->tail)
 	{
-		if (!*alst)
-		{
-			*alst = new_node;
-			new_node->prev = NULL;
-		}
-		else
-		{
-			last = lst_last(*alst);
-			last->next = new_node;
-			new_node->prev = last;
-		}
-		new_node->next = NULL;
+		lst->head = new_node;
+		lst->tail = new_node;
+	}
+	else
+	{
+		new_node->prev = lst->tail;
+		lst->tail->next = new_node;
+		lst->tail = new_node;
 	}
 }

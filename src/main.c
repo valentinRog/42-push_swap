@@ -15,10 +15,12 @@
 static int	init_ps(t_ps *ps, int argc, char **argv)
 {
 	int		i;
-	t_list	*node;
+	t_node	*node;
 
-	ps->a = NULL;
-	ps->b = NULL;
+	ps->a.head = NULL;
+	ps->a.tail = NULL;
+	ps->b.head = NULL;
+	ps->b.tail = NULL;
 	i = 1;
 	while (i < argc)
 	{
